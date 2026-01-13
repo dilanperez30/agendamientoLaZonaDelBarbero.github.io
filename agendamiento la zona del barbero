@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agendamiento de Citas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .contenedor {
+            background: #1e1e1e;
+            padding: 25px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: none;
+        }
+
+        button {
+            margin-top: 20px;
+            background: #25D366;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1ebe5d;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="contenedor">
+    <h2>Agenda tu cita</h2>
+
+    <label>Nombre completo</label>
+    <input type="text" id="nombre" required>
+
+    <label>Servicio</label>
+    <select id="servicio">
+        <option>Corte de cabello</option>
+        <option>Barba</option>
+        <option>Corte + Barba</option>
+        <option>Manicure</option>
+        <option>Pedicure</option>
+    </select>
+
+    <label>Fecha</label>
+    <input type="date" id="fecha" required>
+
+    <label>Hora</label>
+    <input type="time" id="hora" required>
+
+    <button onclick="enviarCita()">Agendar por WhatsApp</button>
+</div>
+
+<script>
+    function enviarCita() {
+        let nombre = document.getElementById("nombre").value;
+        let servicio = document.getElementById("servicio").value;
+        let fecha = document.getElementById("fecha").value;
+        let hora = document.getElementById("hora").value;
+
+        let telefono = "573233489369"; // 
+        let mensaje = `Hola, quiero agendar una cita:%0A
+Nombre: ${nombre}%0A
+Servicio: ${servicio}%0A
+Fecha: ${fecha}%0A
+Hora: ${hora}`;
+
+        window.open(`https://wa.me/${telefono}?text=${mensaje}`, "_blank");
+    }
+</script>
+
+</body>
+</html>
